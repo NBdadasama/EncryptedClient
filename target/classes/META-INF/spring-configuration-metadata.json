@@ -1,0 +1,44 @@
+{
+  "groups": [
+    {
+      "name": "middleware.encryptedclient",
+      "type": "com.middleware.demo.EncryptedClientConfig",
+      "sourceType": "com.middleware.demo.EncryptedClientConfig"
+    },
+    {
+      "name": "spring.rabbitmq",
+      "type": "com.middleware.demo.properties.RabbitModuleProperties",
+      "sourceType": "com.middleware.demo.properties.RabbitModuleProperties"
+    },
+    {
+      "name": "spring.rabbitmq.connection",
+      "type": "com.middleware.demo.properties.MyRabbitModuleProperties",
+      "sourceType": "com.middleware.demo.properties.MyRabbitModuleProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "middleware.encryptedclient.spring-util",
+      "type": "com.middleware.demo.utils.SpringUtil",
+      "sourceType": "com.middleware.demo.EncryptedClientConfig"
+    },
+    {
+      "name": "middleware.encryptedclient.username",
+      "type": "java.lang.String",
+      "sourceType": "com.middleware.demo.EncryptedClientConfig"
+    },
+    {
+      "name": "spring.rabbitmq.connection.modules",
+      "type": "java.util.List<com.middleware.demo.properties.ModuleProperties>",
+      "description": "模块配置",
+      "sourceType": "com.middleware.demo.properties.MyRabbitModuleProperties"
+    },
+    {
+      "name": "spring.rabbitmq.modules",
+      "type": "java.util.List<com.middleware.demo.properties.ModuleProperties>",
+      "description": "模块配置",
+      "sourceType": "com.middleware.demo.properties.RabbitModuleProperties"
+    }
+  ],
+  "hints": []
+}

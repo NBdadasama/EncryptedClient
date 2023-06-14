@@ -1,0 +1,47 @@
+server:
+  address: localhost
+  port: 8080
+mybatis-plus:
+  mapper-location: com.middleware.demo.mapper/*.xml
+  type-aliases-package: com.middleware.demo.mapper
+
+spring:
+  datasource:
+    username: root
+    password: QSJ13977690929
+    url: jdbc:mysql://localhost:3306/rabbitmq?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  rabbitmq:
+    connection:
+      modules:
+        - username: user1
+          queue:
+            arguments:
+              x-message-ttl: 3000
+              delete-time: 10000
+          exchange:
+
+    listener:
+      direct:
+        acknowledge-mode: manual
+    modules:
+      - routing-key: test
+        consumer: consumer1
+        producer: producer2
+        autoAck: false
+        queue:
+          name: test
+          dead-letter-exchange: dead
+          dead-letter-routing-key: dead
+          arguments:
+            x-message-ttl: 3000
+        exchange:
+          name: test
+      - routing-key: dead
+        consumer: deadConsumerService
+        producer: deadProducerService
+        autoAck: false
+        queue:
+          name: dead
+        exchange:
+          name: dead

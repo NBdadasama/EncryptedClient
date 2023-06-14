@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.middleware.demo.mapper.AbsproducerMapper">
+
+    <resultMap id="BaseResultMap" type="com.middleware.demo.entity.Absproducer">
+            <result property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="exchange" column="exchange" jdbcType="VARCHAR"/>
+            <result property="routingkey" column="routingkey" jdbcType="VARCHAR"/>
+            <result property="consumername" column="consumername" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        username,exchange,routingkey,
+        consumername
+    </sql>
+    <select id="selectOneByUsername" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from absproducer
+        where
+        username = #{username,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAllByUsername" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from absproducer
+        where
+        username = #{username,jdbcType=VARCHAR}
+    </select>
+    <select id="selectOneByConsumername" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from absproducer
+        where
+        consumername = #{consumername,jdbcType=VARCHAR}
+    </select>
+</mapper>
