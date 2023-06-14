@@ -47,4 +47,6 @@ public interface Client {
      */
     void sendFile(String username);
 
+    void sendTranslate(String username,String msg,String language);
+
 }

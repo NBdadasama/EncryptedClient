@@ -19,6 +19,7 @@ import com.middleware.demo.roles.impl.AbsConsumerService;
 import com.middleware.demo.roles.impl.AbsProducerService;
 import com.middleware.demo.service.AbsproducerService;
 import com.middleware.demo.service.RsapublickeyService;
+import com.middleware.demo.translation.Translate;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -170,6 +171,14 @@ public class EncryptedClient implements Client {
     public void sendFile(String consumerName) {
         bindProducer(consumerName);
         producerService.sendFile();
+    }
+
+    @Override
+    public void sendTranslate(String consumerName, String msg, String language) {
+        bindProducer(consumerName);
+        Translate translate = new Translate();
+        // 发送要翻译的消息以及要翻译的语言
+        producerService.send(translate.inPut(msg,language));
     }
 
 
